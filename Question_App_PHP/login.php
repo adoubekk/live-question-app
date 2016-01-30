@@ -12,8 +12,8 @@ $result = mysqli_query($con, $sql_query);
 if(mysqli_num_rows($result)>0)
 {
 $row = mysqli_fetch_assoc($result);
-$name = $row["ID"];
-header('home.php' );
+$name = $row["User_ID"];
+header('Location:home.php');
 }
 else
 {

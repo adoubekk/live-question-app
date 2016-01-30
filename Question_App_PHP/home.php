@@ -3,19 +3,19 @@
 <?php
 require 'init.php';
 
-if($_POST[ID] != NULL && $_POST[Password] != NULL){
-$login_name = $_POST[ID];
-$login_pass = $_POST[Password];
+if($_POST['ID'] != NULL && $_POST['Password'] != NULL){
+$login_name = $_POST['ID'];
+$login_pass = $_POST['Password'];
 
 
-$sql_query =  "select ID from user_info where ID like '$login_name' and Password like '$login_pass';";
+$sql_query =  "select User_ID from user_info where User_ID like '$login_name' and Password like '$login_pass';";
 
 $result = mysqli_query($con, $sql_query);
 
 if(mysqli_num_rows($result)>0)
 {
 $row = mysqli_fetch_assoc($result);
-$name = $row["ID"];;
+$name = $row["User_ID"];;
 }
 else
 {
@@ -25,7 +25,7 @@ echo "ID or password is invalid.";
 else{
 	echo "Must Login First.";
 	header('Location: Login&Register.html' );
-	echo "hi";
+	
 }
 
 ?>
@@ -53,7 +53,7 @@ else{
   </div>
 </nav>
 <div class="container">
-  <h1>My First Bootstrap Page</h1>
+  <h1>Hello <?php echo $_POST['ID']?>!</h1>
   <p>This is some text.</p> 
 </div>
 
