@@ -46,15 +46,20 @@ else{
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="login.html">Login</a></li>
-      <li><a href="#">Post A Question</a></li> 
+      <li><a href="Login&Register.html">Login</a></li>
+      <li><a href="Join.php?data=<?php echo $_POST['ID']?>">Enter a classroom</a></li>
+      <li><a href="Post.php?data=<?php echo $_POST['ID']?>">Post a question</a></li> 
       <li><a href="#">Search</a></li> 
     </ul>
   </div>
 </nav>
 <div class="container">
   <h1>Hello <?php echo $_POST['ID']?>!</h1>
-  <p>This is some text.</p> 
+  <ul>
+  <li class = "well">Step 1: join an existing classroom</li>
+  <li class = "well">Step 2: post questions the class/professor using the interactive classroom layout</li>
+  <li class = "well">Step 3: look at questions being asked in real time on the home classroom layout</li>
+  </ul> 
 </div>
 
 </body>
