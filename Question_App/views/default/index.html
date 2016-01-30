@@ -1,0 +1,16 @@
+{{extend 'layout.html'}}
+
+<html>
+
+    <br>
+    <h1>Class Questions</h1>
+    <table class='table'>
+        {{for row in rows:}}
+        <tr>
+            <td> {{=row.User_Name}}</td>
+            <td>{{=row.body}}</td>
+        </tr>
+        {{pass}}
+    </table>
+    
+</html>
