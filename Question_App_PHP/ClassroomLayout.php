@@ -1,5 +1,17 @@
 <!DOCTYPE html>
 <! DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<?php
+
+if($_GET["data"] != NULL){
+$User_Name = htmlspecialchars($_GET["data"]);
+}
+else{
+	echo "Must Login First.";
+	header('Location: Login&Register.html' );
+	
+}
+
+?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
@@ -22,7 +34,6 @@
       <li><a href="home.php?data=<?php echo $User_Name?>">Home</a></li>
       <li><a href="Login&Register.html">Login</a></li>
       <li class="active"><a href="Join.php?data=<?php echo $_POST['ID']?>">Enter a classroom</a></li>
-      <li><a href="Post.php?data=<?php echo $_POST['ID']?>">Post a question</a></li> 
       <!-- Make Upload only visible to admins -->
       <li><a href="Upload.php?data=<?php echo $_POST['ID']?>">Upload a classroom</a></li>
       <li><a href="#">Search</a></li> 
@@ -44,3 +55,20 @@
 
 
 	?>
+
+	<html>
+
+	<form action="Post.php?data=<?php echo $User_Name ?>" method="post" />
+		<div class="form-group">
+			<div class="col-md-50">
+  <label for="usr">Enter a Question</label>
+  <textarea type="text" class="form-control" placeholder=".col-lg-4" id="usr" name="Question" style="width: 300px; height: 150px;"></textarea>
+  <div class="col-xs-3">
+  <input type="submit" class="btn btn-space" value="Submit" >
+</div>
+</div>
+</div>
+		</form>
+		<br> &nbsp
+
+	</html>

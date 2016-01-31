@@ -67,7 +67,6 @@ else{
       <li class="active"><a href="#">Home</a></li>
       <li><a href="Login&Register.html">Login</a></li>
       <li><a href="Join.php?data=<?php echo $var?>">Enter a classroom</a></li>
-      <li><a href="Post.php?data=<?php echo $_POST['ID']?>">Post a question</a></li> 
       <!-- Make Upload only visible to admins -->
       <li><a href="Upload.php?data=<?php echo $var?>">Upload a classroom</a></li>
       <li><a href="#">Search</a></li> 

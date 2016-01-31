@@ -39,7 +39,7 @@ else{
     <ul class="nav navbar-nav">
       <li><a href="home.php?data=<?php echo $User_Name?>">Home</a></li>
       <li><a href="Login&Register.html">Login</a></li>
-      <li class="active"><a href="Join.php?data=<?php echo $_POST['ID']?>">Enter a classroom</a></li>
+      <li class="active"><a href="Join.php?data=<?php echo $User_Name?>">Enter a classroom</a></li>
       <li><a href="Post.php?data=<?php echo $_POST['ID']?>">Post a question</a></li> 
       <!-- Make Upload only visible to admins -->
       <li><a href="Upload.php?data=<?php echo $_POST['ID']?>">Upload a classroom</a></li>
@@ -52,7 +52,7 @@ else{
 	<h2>Choose a classroom</h2>
 </div>
 <div class="col-xs-4">
-<form action="ClassroomLayout.php" method="post">
+<form action="ClassroomLayout.php?data=<?php echo $User_Name?>" method="post">
         <fieldset class="form-group">
         <select id="Classrooms" name="Classroom" class = "form-control">
         
