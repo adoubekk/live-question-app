@@ -72,7 +72,7 @@ echo "Data insertion error...".mysqli_error($con);
       if($bool == 1){ ?>
       <li><a href="Upload.php?data=<?php echo $var?>">Upload a classroom</a></li>
       <?php } ?>
-      <li><a href="Search.php?data=<?php echo $var?>">Search</a></li> 
+      <li><a href="#">Search</a></li> 
     </ul>
   </div>
 </nav>

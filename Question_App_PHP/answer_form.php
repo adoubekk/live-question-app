@@ -58,7 +58,7 @@ else{
    echo $question;
    ?>
 
-   <form action="answer.php?data=<?php echo $User_Name?>&ques=<?php echo $question ?>&seat=<?php echo $QNum ?>&ClassID=$_GET['ClassID']" method="post">
+   <form action="answer.php?data=<?php echo $User_Name?>&ques=<?php echo $question ?>&seat=<?php echo $QNum ?>&ClassID=<?php echo $_GET['ClassID']?>" method="post">
    Answer this question: <br>
    <input type="charvar" name="Answer"> </input> <br> <br>
    <input type="submit" value="Submit Question"> </input>
