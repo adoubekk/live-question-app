@@ -52,9 +52,9 @@ else{
 	<h2>Choose a classroom</h2>
 </div>
 <div class="col-xs-4">
-<form method="get" action="ClassroomLayout.php">
+<form action="ClassroomLayout.php" method="post">
         <fieldset class="form-group">
-        <select id="Classrooms" name="Classrooms" class = "form-control">
+        <select id="Classrooms" name="Classroom" class = "form-control">
         
             <?php
             
