@@ -35,8 +35,8 @@ else{
       <li><a href="Login&Register.html">Login</a></li>
       <li class="active"><a href="Join.php?data=<?php echo $_GET['ID']?>">Enter a classroom</a></li>
       <!-- Make Upload only visible to admins -->
-      <li><a href="Upload.php?data=<?php echo $_POST['ID']?>">Upload a classroom</a></li>
-      <li><a href="#">Search</a></li> 
+      <li><a href="Upload.php?data=<?php echo $User_Name?>">Upload a classroom</a></li>
+      <li><a href="Search.php?data=<?php echo $User_Name?>">Search</a></li>  
     </ul>
   </div>
 </nav>
