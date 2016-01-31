@@ -2,8 +2,10 @@
 
 <?php
 require 'init.php';
+session_start();
+$var = array_key_exists('ID', $_POST) ? $_POST['ID'] : null;
 
-if($_POST['ID'] != NULL && $_POST['Password'] != NULL){
+if($_POST['ID'] != NULL & $_POST['Password'] != NULL){
 $login_name = $_POST['ID'];
 $login_pass = $_POST['Password'];
 
@@ -21,6 +23,22 @@ else
 {
 echo "ID or password is invalid.";
 }
+}elseif ($_POST['Class_Name'] != NULL) {
+	$C_Name = $_POST['Class_Name'];
+	$C_Seats = $_POST['Class_Seats'];
+
+	$sql_query2 = "INSERT INTO Classrooms (Class_Name, Class_Seats) VALUES ( '$C_Name' ,'$C_Seats')";
+
+	if(mysqli_query($con,$sql_query2))
+{
+echo "<h3>$C_Name has been uploaded</h3>";
+}
+else
+{
+echo "Data insertion error...".mysqli_error($con);
+}
+}elseif ($_GET["data"] != NULL) {
+	
 }
 else{
 	echo "Must Login First.";
@@ -29,6 +47,7 @@ else{
 }
 
 ?>
+<?php if($_POST['ID'] == NULL){$var = $_GET["data"];} else{$var = $_POST['ID'];} ?>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
@@ -47,14 +66,16 @@ else{
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="Login&Register.html">Login</a></li>
-      <li><a href="Join.php?data=<?php echo $_POST['ID']?>">Enter a classroom</a></li>
+      <li><a href="Join.php?data=<?php echo $var?>">Enter a classroom</a></li>
       <li><a href="Post.php?data=<?php echo $_POST['ID']?>">Post a question</a></li> 
+      <!-- Make Upload only visible to admins -->
+      <li><a href="Upload.php?data=<?php echo $var?>">Upload a classroom</a></li>
       <li><a href="#">Search</a></li> 
     </ul>
   </div>
 </nav>
 <div class="container">
-  <h1>Hello <?php echo $_POST['ID']?>!</h1>
+  <h1>Welcome! <?php echo $var;?></h1>
   <ul>
   <li class = "well">Step 1: join an existing classroom</li>
   <li class = "well">Step 2: post questions the class/professor using the interactive classroom layout</li>

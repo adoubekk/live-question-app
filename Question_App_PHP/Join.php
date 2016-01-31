@@ -31,8 +31,56 @@ else{
 
 ?>
 <html>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="home.php?data=<?php echo $User_Name?>">Home</a></li>
+      <li><a href="Login&Register.html">Login</a></li>
+      <li class="active"><a href="Join.php?data=<?php echo $_POST['ID']?>">Enter a classroom</a></li>
+      <li><a href="Post.php?data=<?php echo $_POST['ID']?>">Post a question</a></li> 
+      <!-- Make Upload only visible to admins -->
+      <li><a href="Upload.php?data=<?php echo $_POST['ID']?>">Upload a classroom</a></li>
+      <li><a href="#">Search</a></li> 
+    </ul>
+  </div>
+</nav>
 
 <div class="container-fluid">
 	<h2>Choose a classroom</h2>
+</div>
+<div class="col-xs-4">
+<form method="get" action="ClassroomLayout.php">
+        <fieldset class="form-group">
+        <select id="Classrooms" name="Classrooms" class = "form-control">
+        
+            <?php
+            
+            require 'init.php';
+            
+            $Cquery="SELECT Class_Name FROM classrooms";
+            $Cresult=mysqli_query($con,$Cquery) or die ("Query to get data from firsttable failed: ".mysql_error());
+            
+            while ($Crow=mysqli_fetch_array($Cresult)) {
+            $CTitle=$Crow["Class_Name"];
+                echo "<option>
+                    $CTitle
+
+                </option>";
+            
+            }
+                
+            ?>
+    
+        </select>
+
+    </fieldset>
+        <div class="col-xs-3">
+  <input type="submit" class="btn btn-space" value="join this class" >
+</div>
+    </form>
+</div>
 
 </html>

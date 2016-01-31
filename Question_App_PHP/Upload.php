@@ -19,7 +19,6 @@
 <?php
 require 'init.php';
 
-
 if($_GET["data"] != NULL){
 $User_Name = htmlspecialchars($_GET["data"]);
 }
@@ -33,8 +32,29 @@ else{
 <html>
 
 <div class="container-fluid">
-	<h2>Post a question to the class</h2>
+	<h2>Upload a classroom</h2>
 </div>
 
-</html>
+<h2>Upload</h2>
+	</div>
 
+		<form action="home.php?data=<?php echo $User_Name ?>" method="post" />
+		<div class="form-group">
+			<div class="col-xs-4">
+  <label for="usr">Class Name:</label>
+  <input type="text" class="form-control" placeholder=".col-lg-4" id="usr" name="Class_Name">
+  <div class="col-xs-3">
+  <input type="submit" class="btn btn-space" value="Submit" >
+</div>
+</div>
+</div>
+<div class="form-group">
+	<div class="col-xs-4">
+  <label for="pwd"># of seats</label>
+  <input type="text" class="form-control" id="pwd" name="Class_Seats">
+</div>
+</div>
+		</form>
+		<br> &nbsp
+
+</html>
