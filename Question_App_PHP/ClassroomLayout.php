@@ -33,7 +33,7 @@ else{
     <ul class="nav navbar-nav">
       <li><a href="home.php?data=<?php echo $User_Name?>">Home</a></li>
       <li><a href="Login&Register.html">Login</a></li>
-      <li class="active"><a href="Join.php?data=<?php echo $_POST['ID']?>">Enter a classroom</a></li>
+      <li class="active"><a href="Join.php?data=<?php echo $_GET['ID']?>">Enter a classroom</a></li>
       <!-- Make Upload only visible to admins -->
       <li><a href="Upload.php?data=<?php echo $_POST['ID']?>">Upload a classroom</a></li>
       <li><a href="#">Search</a></li> 
@@ -45,22 +45,28 @@ else{
 	<?php 
 
 	require 'init.php';
+   
+   if ($_POST['Classroom']!=NULL){
+      $Class_Name=$_POST['Classroom'];
+   } else {
+      $Class_Name = $_GET['ClassID'];
+   }
+   echo $Class_Name;
 
-	$Classroom = $_POST['Classroom'];
-	$Cquery="SELECT Class_Seats FROM classrooms where Class_Name like '$Classroom';";
+	$Cquery="SELECT Class_Seats FROM classrooms where Class_Name like '$Class_Name';";
 	$Cresult=mysqli_query($con,$Cquery) or die ("Query to get data from firsttable failed: ".mysql_error());
 	$CSeats = mysqli_fetch_array($Cresult);
 	$NumSeats = $CSeats["Class_Seats"];
    
    ?>
-   <form action="answer_form.php?data=<?php echo $User_Name?>" method="post">
+   <form action="answer_form.php?data=<?php echo $User_Name?>&ClassID=<?php echo $Class_Name?>" method="post">
       <?php for($i=1; $i<=$NumSeats; $i++): 
       $sql = "SELECT `Seat`, `User_ID`, `Question` FROM `questions` WHERE Seat = $i";
       $result = mysqli_query($con, $sql);
          if (($result->num_rows > 0)): ?>
          <button class="chairQ" name="Chair" value=<?php echo $i ?>><?php echo $i ?></button>
          <?php else: ?>
-         <button class="chair"><?php echo $i ?></button>
+         <button class="chair" disabled><?php echo $i ?></button>
          <?php endif;
          if ($i%10 == 0): ?> 
          <br>
@@ -68,7 +74,7 @@ else{
          endfor; ?>
    </form>
          
-   <form action="question_form.php?data=<?php echo $User_Name?>" method="post">
+   <form action="question_form.php?data=<?php echo $User_Name?>&ClassID=<?php echo $Class_Name ?>" method="post">
    Enter your seat number: <br>
    <input type="number" name="SeatNum"> </input> <br>
    Enter your question: <br>

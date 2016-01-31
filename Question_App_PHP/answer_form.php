@@ -41,10 +41,15 @@ else{
   </div>
 </nav>
 	</head>
-
+   <body>
+   
+   <div class="container-fluid">
+	<h2>Answer this question</h2>
+   </div>
 	<?php 
-
 	require 'init.php';
+
+   
    $QNum = $_POST["Chair"];
    $sql = "SELECT `Seat`, `User_ID`, `Question` FROM `questions` WHERE Seat = $QNum";
    $result = mysqli_query($con, $sql);
@@ -53,7 +58,7 @@ else{
    echo $question;
    ?>
 
-   <form action="answer.php?data=<?php echo $User_Name?>&ques=<?php echo $question ?>&seat=<?php echo $QNum ?>" method="post">
+   <form action="answer.php?data=<?php echo $User_Name?>&ques=<?php echo $question ?>&seat=<?php echo $QNum ?>&ClassID=$_GET['ClassID']" method="post">
    Answer this question: <br>
    <input type="charvar" name="Answer"> </input> <br> <br>
    <input type="submit" value="Submit Question"> </input>
@@ -62,5 +67,5 @@ else{
 
 		</form>
 		<br> &nbsp
-
+   </body>
 	</html>
