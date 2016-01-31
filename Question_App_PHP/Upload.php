@@ -30,12 +30,24 @@ else{
 
 ?>
 <html>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="home.php?data=<?php echo $User_Name?>">Home</a></li>
+      <li class="active"><a href="Join.php?data=<?php echo $User_Name?>">Upload a classroom</a></li>
+      <!-- Make Upload only visible to admins -->
+      <li><a href="#">Search</a></li> 
+    </ul>
+  </div>
+</nav>
 
 <div class="container-fluid">
-	<h2>Upload a classroom</h2>
+	<h2>Upload</h2>
 </div>
 
-<h2>Upload</h2>
 	</div>
 
 		<form action="home.php?data=<?php echo $User_Name ?>" method="post" />

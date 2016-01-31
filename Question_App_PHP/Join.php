@@ -38,11 +38,8 @@ else{
     </div>
     <ul class="nav navbar-nav">
       <li><a href="home.php?data=<?php echo $User_Name?>">Home</a></li>
-      <li><a href="Login&Register.html">Login</a></li>
       <li class="active"><a href="Join.php?data=<?php echo $User_Name?>">Enter a classroom</a></li>
-      <li><a href="Post.php?data=<?php echo $_POST['ID']?>">Post a question</a></li> 
       <!-- Make Upload only visible to admins -->
-      <li><a href="Upload.php?data=<?php echo $_POST['ID']?>">Upload a classroom</a></li>
       <li><a href="#">Search</a></li> 
     </ul>
   </div>

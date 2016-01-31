@@ -45,6 +45,7 @@ if(mysqli_query($con,$sql)){
 
 	<div class="container">
 <h1> Registration Success! </h1>
+<a href = "home.php?data=<?php echo $value ?>">Click here to go to the home page</a>
 <div>
 
 

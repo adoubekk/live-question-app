@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <?php
+error_reporting(0);
 require 'init.php';
 session_start();
 $var = array_key_exists('ID', $_POST) ? $_POST['ID'] : null;
@@ -40,11 +41,6 @@ echo "Data insertion error...".mysqli_error($con);
 }elseif ($_GET["data"] != NULL) {
 	
 }
-else{
-	echo "Must Login First.";
-	header('Location: Login&Register.html' );
-	
-}
 
 ?>
 <?php if($_POST['ID'] == NULL){$var = $_GET["data"];} else{$var = $_POST['ID'];} ?>
@@ -65,22 +61,46 @@ else{
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="Login&Register.html">Login</a></li>
       <li><a href="Join.php?data=<?php echo $var?>">Enter a classroom</a></li>
       <!-- Make Upload only visible to admins -->
+      <?php require 'init.php';
+      $sql_query3 = "select admin from user_info where User_ID like '$var';"; 
+      $result = mysqli_query($con, $sql_query3);
+      $row = mysqli_fetch_assoc($result);
+      $bool = $row["admin"];
+      
+      if($bool == 1){ ?>
       <li><a href="Upload.php?data=<?php echo $var?>">Upload a classroom</a></li>
+      <?php } ?>
       <li><a href="#">Search</a></li> 
     </ul>
   </div>
 </nav>
 <div class="container">
-  <h1>Welcome! <?php echo $var;?></h1>
+  <h1>Welcome <?php echo $var;?>!</h1>
   <ul>
   <li class = "well">Step 1: join an existing classroom</li>
   <li class = "well">Step 2: post questions the class/professor using the interactive classroom layout</li>
   <li class = "well">Step 3: look at questions being asked in real time on the home classroom layout</li>
   </ul> 
 </div>
+
+
+<?php
+echo $bool;
+error_reporting(0);
+if($_POST['ID'] == NULL & $_GET['data'] == NULL){
+
+	?>
+	<h2>Don't have an account?</h2>
+<a href="Login&Register.html"><button type="submit" class="btn-primary btn-lg">Login/Register</button></a>
+<?php } ?>
+
+
+
+
+
+
 
 </body>
 </html>
