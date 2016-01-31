@@ -45,47 +45,21 @@ else{
 	<?php 
 
 	require 'init.php';
-
-	$Classroom = $_POST['Classroom'];
-	$Cquery="SELECT Class_Seats FROM classrooms where Class_Name like '$Classroom';";
-	$Cresult=mysqli_query($con,$Cquery) or die ("Query to get data from firsttable failed: ".mysql_error());
-	$CSeats = mysqli_fetch_array($Cresult);
-	$NumSeats = $CSeats["Class_Seats"];
-   
+   $QNum = $_POST["Chair"];
+   $sql = "SELECT `Seat`, `User_ID`, `Question` FROM `questions` WHERE Seat = $QNum";
+   $result = mysqli_query($con, $sql);
+   $entry = mysqli_fetch_assoc($result);
+   $question = $entry["Question"];
+   echo $question;
    ?>
-   <form action="answer_form.php?data=<?php echo $User_Name?>" method="post">
-      <?php for($i=1; $i<=$NumSeats; $i++): 
-      $sql = "SELECT `Seat`, `User_ID`, `Question` FROM `questions` WHERE Seat = $i";
-      $result = mysqli_query($con, $sql);
-         if (($result->num_rows > 0)): ?>
-         <button class="chairQ" name="Chair" value=<?php echo $i ?>><?php echo $i ?></button>
-         <?php else: ?>
-         <button class="chair"><?php echo $i ?></button>
-         <?php endif;
-         if ($i%10 == 0): ?> 
-         <br>
-         <?php endif;
-         endfor; ?>
-   </form>
-         
-   <form action="question_form.php?data=<?php echo $User_Name?>" method="post">
-   Enter your seat number: <br>
-   <input type="number" name="SeatNum"> </input> <br>
-   Enter your question: <br>
-   <input type="charvar" name="Question"> </input> <br> <br>
-   <input type="submit" value="Submit Question"> </input>
- </form>
 
-	<form action="Post.php?data=<?php echo $User_Name ?>" method="post" />
-		<div class="form-group">
-			<div class="col-md-50">
-  <label for="usr">Enter a Question</label>
-  <textarea type="text" class="form-control" placeholder=".col-lg-4" id="usr" name="Question" style="width: 300px; height: 150px;"></textarea>
-  <div class="col-xs-3">
-  <input type="submit" class="btn btn-space" value="Submit" >
-</div>
-</div>
-</div>
+   <form action="answer.php?data=<?php echo $User_Name?>&ques=<?php echo $question ?>&seat=<?php echo $QNum ?>" method="post">
+   Answer this question: <br>
+   <input type="charvar" name="Answer"> </input> <br> <br>
+   <input type="submit" value="Submit Question"> </input>
+   </form>
+
+
 		</form>
 		<br> &nbsp
 

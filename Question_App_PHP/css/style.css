@@ -1,0 +1,28 @@
+.chair{
+  width: 65px;
+  height: 65px;
+  margin:0;
+  padding-top: 0;
+  padding-bottom: 20px;
+  border: 0;
+  background: transparent url(images/empty_chair.png) no-repeat center center;
+  color:white;
+}
+
+.chairQ{
+  width: 65px;
+  height: 65px;
+  margin:0;
+  padding-top: 0;
+  padding-bottom: 20px;
+  border: 0;
+  color: black;
+  background: transparent url(images/question_chair.png) no-repeat center center;
+}
+
+
+.seating-chart{
+   width = 100px;
+   border:5px solid black;
+   background-color: #ff0000;
+}
